@@ -1,0 +1,345 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "price": 655000,
+        "address": "42 Gallaxy way",
+        "beds": 3,
+        "baths": 1
+      },
+      "geometry": {
+        "coordinates": [
+          -113.32235108998637,
+          53.54793861494585
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "price": 995000,
+        "address": "895 Trunk Ave",
+        "beds": 6,
+        "baths": 4
+      },
+      "geometry": {
+        "coordinates": [
+          -113.29656277563998,
+          53.53521978899289
+        ],
+        "type": "Point"
+      },
+      "id": 1
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "price": 399000,
+        "address": "123 Kinda Real Street",
+        "beds": 3,
+        "baths": 9
+      },
+      "geometry": {
+        "coordinates": [
+          -113.26198142509442,
+          53.51951535348579
+        ],
+        "type": "Point"
+      },
+      "id": 2
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "price": 835000,
+        "address": "243 Win Mag Ave",
+        "beds": 3,
+        "baths": 2
+      },
+      "geometry": {
+        "coordinates": [
+          -113.26698126783889,
+          53.56476595866218
+        ],
+        "type": "Point"
+      },
+      "id": 3
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "price": 585000,
+        "address": "11 Geuts ave",
+        "beds": 3,
+        "baths": 2
+      },
+      "geometry": {
+        "coordinates": [
+          -113.23993966908036,
+          53.554665176824585
+        ],
+        "type": "Point"
+      },
+      "id": 4
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "price": 399000,
+        "address": "789 Cottonwood Ave",
+        "beds": 3,
+        "baths": 2
+      },
+      "geometry": {
+        "coordinates": [
+          -113.26759166913513,
+          53.59804932504704
+        ],
+        "type": "Point"
+      },
+      "id": 5
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "price": 985000,
+        "address": "2403 81 Street Nw",
+        "beds": 5,
+        "baths": 3
+      },
+      "geometry": {
+        "coordinates": [
+          -113.0959726952662,
+          53.57331764221175
+        ],
+        "type": "Point"
+      },
+      "id": 6
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "price": 399000,
+        "address": "489 Magnum Street",
+        "beds": 5,
+        "baths": 3
+      },
+      "geometry": {
+        "coordinates": [
+          -113.10035078760424,
+          53.53222781617626
+        ],
+        "type": "Point"
+      },
+      "id": 7
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "price": 355000,
+        "address": "123 Fake street 2",
+        "beds": 3,
+        "baths": 1
+      },
+      "geometry": {
+        "coordinates": [
+          -113.18021906466664,
+          53.52848980815776
+        ],
+        "type": "Point"
+      },
+      "id": 8
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "price": 542000,
+        "address": "123 Fake street",
+        "beds": 3,
+        "baths": 2
+      },
+      "geometry": {
+        "coordinates": [
+          -113.16438688750328,
+          53.59467017844412
+        ],
+        "type": "Point"
+      },
+      "id": 9
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "price": 123555,
+        "address": "987 Triumph Gate",
+        "beds": 5,
+        "baths": 4
+      },
+      "geometry": {
+        "coordinates": [
+          -113.20530577232158,
+          53.59802245421392
+        ],
+        "type": "Point"
+      },
+      "id": 10
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "price": 366000,
+        "address": "63 Mellon gate",
+        "beds": 9,
+        "baths": 8
+      },
+      "geometry": {
+        "coordinates": [
+          -113.31102896564732,
+          53.49894888735324
+        ],
+        "type": "Point"
+      },
+      "id": 11
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "price": 755,
+        "address": "126 Lakewood Road",
+        "beds": 4,
+        "baths": 2
+      },
+      "geometry": {
+        "coordinates": [
+          -113.30914201609079,
+          53.46077703823141
+        ],
+        "type": "Point"
+      },
+      "id": 12
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "price": 366000,
+        "address": "123 Real Street",
+        "beds": 3,
+        "baths": 2
+      },
+      "geometry": {
+        "coordinates": [
+          -113.17961135926575,
+          53.47650070453892
+        ],
+        "type": "Point"
+      },
+      "id": 13
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "price": 639000,
+        "address": "43 Radish grove",
+        "beds": 3,
+        "baths": 2
+      },
+      "geometry": {
+        "coordinates": [
+          -113.22802645336748,
+          53.49894820584689
+        ],
+        "type": "Point"
+      },
+      "id": 14
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "price": 599999,
+        "address": "90 Wintergate grove",
+        "beds": 6,
+        "baths": 6
+      },
+      "geometry": {
+        "coordinates": [
+          -113.12618680109242,
+          53.482116670679204
+        ],
+        "type": "Point"
+      },
+      "id": 15
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "price": 355000,
+        "address": "129 cheap street",
+        "beds": 3,
+        "baths": 2
+      },
+      "geometry": {
+        "coordinates": [
+          -113.09157757331718,
+          53.50755016763057
+        ],
+        "type": "Point"
+      },
+      "id": 16
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "price": 649000,
+        "address": "947 Hunters Gate",
+        "beds": 6,
+        "baths": 4
+      },
+      "geometry": {
+        "coordinates": [
+          -113.15194636984886,
+          53.515402332641656
+        ],
+        "type": "Point"
+      },
+      "id": 17
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "price": 655000,
+        "address": "211 Sunbelt Gate",
+        "beds": 3,
+        "baths": 2
+      },
+      "geometry": {
+        "coordinates": [
+          -113.15188857395466,
+          53.55951602144276
+        ],
+        "type": "Point"
+      },
+      "id": 18
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "price": 985000,
+        "address": "11 Tomato Street",
+        "beds": 5,
+        "baths": 4
+      },
+      "geometry": {
+        "coordinates": [
+          -113.08407346145103,
+          53.469021753394685
+        ],
+        "type": "Point"
+      },
+      "id": 19
+    }
+  ]
+}
