@@ -1,3 +1,3 @@
-module github.com/ethanjmarchand/StrathconaProperties0.1.1
+module github.com/ethanjmarchand/StrathconaProperties
 
 go 1.22
