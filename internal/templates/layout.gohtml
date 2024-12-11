@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/assets/styles.css">
+    <link rel="stylesheet" href="/assets/output.css">
     <link rel="apple-touch-icon" sizes="57x57" href="/assets/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/assets/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="/assets/apple-icon-72x72.png">
@@ -24,17 +24,31 @@
     <title>Strathcona Properties</title>
 </head>
 <body>
-    <nav>
-        <h1>Strathcona Properties</h1>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/actives">Active Listings</a></li>
-                <li><a href="/contact">Contact</a></li>
-            </ul>
-            <a href="/login">Login</a>
-            <a href="/create">Create Account</a>
-    </nav>
-    {{ template "content" . }}
+    <header>
+        <nav class="py-6 px-6 items-center">
+            <div class="flex justify-between">
+                <div class="text-2xl pr-8">SP</div>
+                <div>
+                    <button class="hover:text-blue-500 cursor-pointer" id="menu-btn">Menu</button>
+                </div>
+            </div>
+            <div class="h-0 overflow-hidden transition-all ease-in-out" id="menu">
+                <a href="/" class="text-lg font-semibold hover:text-blue-500 block text-center">Home</a>
+                <a href="/actives" class="text-lg font-semibold hover:text-blue-500 block text-center">Active Listings</a>
+                <a href="/contact" class="text-lg font-semibold hover:text-blue-500 block text-center">Contact</a>
+                <a class="block text-center text-white hover:bg-blue-300 bg-blue-500 py-1" href="/create">Create Account</a>
+                <a class="border-t block text-center text-blue-600 hover:text-blue-500" href="/login">Login</a>
+            </div>
+            <div>
+
+            </div>
+
+        </nav>
+    </header>
+    <main class="bg-gray-50">
+        {{ template "content" . }}
+    </main>
+
 <script src="/assets/index.js"></script>
 </body>
 </html>
