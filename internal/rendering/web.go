@@ -1,4 +1,4 @@
-package views
+package rendering
 
 import (
 	"fmt"
@@ -26,12 +26,12 @@ type Template struct {
 	htmlTpl *template.Template
 }
 
-func (t *Template) Execute(w http.ResponseWriter, data interface{}) {
+func (t *Template) Render(w http.ResponseWriter, names []string, data interface{}) error {
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
-	err := t.htmlTpl.Execute(w, data)
-	if err != nil {
-		_ = fmt.Errorf("error executing temmplate: %w", err)
-		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
-		return
+	for _, name := range names {
+		if err := t.htmlTpl.ExecuteTemplate(w, name, data); err != nil {
+			return err
+		}
 	}
+	return nil
 }

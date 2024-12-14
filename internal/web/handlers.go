@@ -1,89 +1,126 @@
 package web
 
 import (
-	"github.com/ethanjmarchand/StrathconaProperties/internal/views"
+	"fmt"
+	"github.com/ethanjmarchand/StrathconaProperties/internal/sp"
 	"net/http"
 )
 
+// HomeHandler is the struct with the ServeHTTP method on it to pass into mux.Handle.
 type HomeHandler struct {
-	//US   *sp.UserService
-	//LS   *sp.ListingService
-	TMPL         *views.Template
-	TMPLNotFound *views.Template
+	RS sp.RenderingService
 }
 
 func (h *HomeHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	if r.URL.Path != "/" {
-		w.WriteHeader(http.StatusNotFound)
-		h.TMPLNotFound.Execute(w, nil)
+	data := struct {
+		ActiveTab string
+	}{
+		ActiveTab: "home",
+	}
+	ns := []string{"home.gohtml", "layout.gohtml"}
+	err := h.RS.Renderer.Render(w, ns, data)
+	if err != nil {
+		_ = fmt.Errorf("error rendering home page: %s", err)
+		http.Error(w, "Something went wrong", http.StatusInternalServerError)
 		return
 	}
-	h.TMPL.Execute(w, nil)
 }
 
-func NewHomeHandler(tmpl *views.Template, tmplNotFound *views.Template) HomeHandler {
+func NewHomeHandler(rs sp.RenderingService) HomeHandler {
 	return HomeHandler{
-		//US:   us,
-		//LS:   ls,
-		TMPL:         tmpl,
-		TMPLNotFound: tmplNotFound,
+		RS: rs,
 	}
 }
 
+// ActivesHandler is the struct with the ServeHTTP method on it to pass into mux.Handle.
 type ActivesHandler struct {
-	TMPL *views.Template
+	RS sp.RenderingService
 }
 
 func (h *ActivesHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	actives := []struct {
-		Address string
-		Beds    int
-		Baths   int
-		Price   float32
+	actives := []sp.Listing{
+		{
+			ID:    1,
+			Beds:  4,
+			Baths: 4,
+		},
+		{
+			ID:    2,
+			Beds:  4,
+			Baths: 4,
+		},
+		{
+			ID:    3,
+			Beds:  4,
+			Baths: 4,
+		},
+	}
+
+	data := struct {
+		Actives   []sp.Listing
+		ActiveTab string
 	}{
-		{
-			Address: "123 Fake street",
-			Beds:    3,
-			Baths:   4,
-			Price:   399900.00,
-		},
-		{
-			Address: "589 Hunters Grove",
-			Beds:    3,
-			Baths:   4,
-			Price:   750000.99,
-		},
-		{
-			Address: "2408 State St",
-			Beds:    5,
-			Baths:   4,
-			Price:   110000.55,
-		}, {
-			Address: "Test Address 2",
-			Beds:    5,
-			Baths:   4,
-			Price:   110000.55,
-		},
+		Actives:   actives,
+		ActiveTab: "actives",
 	}
-	h.TMPL.Execute(w, actives)
+	ns := []string{"actives.gohtml", "layout.gohtml"}
+	err := h.RS.Renderer.Render(w, ns, data)
+	if err != nil {
+		_ = fmt.Errorf("error rendering actives page: %s", err)
+		http.Error(w, "Something went wrong", http.StatusInternalServerError)
+		return
+	}
 }
 
-func NewActivesHandler(tmpl *views.Template) ActivesHandler {
+func NewActivesHandler(rs sp.RenderingService) ActivesHandler {
 	return ActivesHandler{
-		TMPL: tmpl,
+		RS: rs,
 	}
 }
 
+// ContactHandler is the struct with the ServeHTTP method on it to pass into mux.Handle.
 type ContactHandler struct {
-	TMPL *views.Template
+	RS sp.RenderingService
 }
 
 func (h *ContactHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	h.TMPL.Execute(w, nil)
+	data := struct {
+		ActiveTab string
+	}{
+		ActiveTab: "contact",
+	}
+	ns := []string{"contact.gohtml", "layout.gohtml"}
+	err := h.RS.Renderer.Render(w, ns, data)
+	if err != nil {
+		_ = fmt.Errorf("error rendering contact page: %s", err)
+		http.Error(w, "Something went wrong", http.StatusInternalServerError)
+		return
+	}
 }
 
-func NewContactHandler(tmpl *views.Template) ContactHandler {
+func NewContactHandler(rs sp.RenderingService) ContactHandler {
 	return ContactHandler{
-		TMPL: tmpl,
+		RS: rs,
+	}
+}
+
+// SignUpHandler is the struct with the ServeHTTP method on it to pass into mux.Handle.
+type SignUpHandler struct {
+	RS sp.RenderingService
+}
+
+func (h *SignUpHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	ns := []string{"signup.gohtml", "layout.gohtml"}
+	err := h.RS.Renderer.Render(w, ns, nil)
+	if err != nil {
+		_ = fmt.Errorf("error rendering signup page: %s", err)
+		http.Error(w, "Something went wrong", http.StatusInternalServerError)
+		return
+	}
+}
+
+func NewSignUpHandler(rs sp.RenderingService) SignUpHandler {
+	return SignUpHandler{
+		RS: rs,
 	}
 }

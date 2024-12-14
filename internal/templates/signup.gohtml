@@ -1,0 +1,26 @@
+{{ define "content" }}
+    <div class="py-12 flex justify-center">
+        <div class="p-8 bg-white rounded shadow mx-2">
+            <h1 class="pt-3 pb-6 text-center text-3xl font-bold">Create an account!</h1>
+            <form method="POST" action="/users">
+                <div class="py-2">
+                    <label for="email" class="font-bold text-sm">E-mail</label>
+                    <input type="text" name="email" id="email" autocomplete="email" required class="w-full border px-3 py-3" />
+                </div>
+                <div class="py-2">
+                    <label for="password" class="font-bold text-sm">Password</label>
+                    <input type="password" name="password" id="password" required class="w-full border px-3 py-3" />
+                    <p id="show-password-btn" class="hover:text-blue-500 cursor-pointer text-gray-400 text-sm underline">Show</p>
+                </div>
+                <div class="py-4 ">
+                    <button class="hover:bg-blue-400 text-white w-full bg-blue-500 py-3 rounded text-lg" type="submit">Sign up</button>
+                </div>
+                <div class="flex justify-between w-full pb-2">
+                    <p class="text-xs text-gray-500">Have an account? <a class="hover:text-blue-500 underline" href="/signin">Sign in</a></p>
+                    <p class="text-xs text-gray-500 hover"><a class="hover:text-blue-500 underline" href="/reset-pw">Forgot Password?</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="/assets/signup.js"></script>
+{{ end }}

@@ -12,9 +12,9 @@ type ListingFilter struct {
 }
 
 type Listing struct {
-	ID        string `json:"id"`
-	Bedrooms  string `json:"bedrooms"`
-	Bathrooms string `json:"bathrooms"`
+	ID    int `json:"id"`
+	Beds  int `json:"bedrooms"`
+	Baths int `json:"bathrooms"`
 }
 
 type ListingService interface {

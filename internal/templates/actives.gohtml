@@ -1,15 +1,14 @@
 {{ define "content"}}
 <h2>Welcome to the actives page</h2>
 
-{{ range .}}
+{{ range .Actives}}
     {{ template "listing" .}}
 {{end}}
 
 {{ end }}
 
 {{ define "listing" }}
-    <p><b>Address: {{ .Address }}</b></p>
-    <p>Price: {{ .Price }}</p>
+    <p>Price: {{ .ID }}</p>
     <p>Beds: {{ .Beds }}</p>
     <p>Baths: {{ .Baths }}</p>
     <hr/>
