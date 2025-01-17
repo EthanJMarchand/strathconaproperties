@@ -29,12 +29,12 @@
     &quot;assignee&quot;: &quot;EthanJMarchand&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/EthanJMarchand/StrathconaProperties.git",
-    "accountId": "b2a7f410-8645-417b-9fce-8d272aa057f9"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/EthanJMarchand/StrathconaProperties.git&quot;,
+    &quot;accountId&quot;: &quot;b2a7f410-8645-417b-9fce-8d272aa057f9&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 0
@@ -52,7 +52,7 @@
     "RunOnceActivity.go.formatter.settings.were.checked": "true",
     "RunOnceActivity.go.migrated.go.modules.settings": "true",
     "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
-    "git-widget-placeholder": "adding__auth",
+    "git-widget-placeholder": "Master",
     "go.import.settings.migrated": "true",
     "go.sdk.automatically.set": "true",
     "last_opened_file_path": "/Users/ethanmarchand",

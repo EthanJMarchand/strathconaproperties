@@ -3,6 +3,3 @@
 
 # Node stuff
 node_modules/
-
-# ignore IDE files
-.idea
