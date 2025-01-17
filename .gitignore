@@ -5,7 +5,7 @@
 images/
 
 # Node stuff
-node_modules/
+#node_modules/
 
 # ignore IDE files
 .idea
