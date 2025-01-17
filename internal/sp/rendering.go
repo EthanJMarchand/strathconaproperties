@@ -5,7 +5,7 @@ import (
 )
 
 type Renderer interface {
-	Render(w http.ResponseWriter, name []string, data interface{}) error
+	Render(w http.ResponseWriter, r *http.Request, data interface{})
 }
 
 type RenderingService struct {

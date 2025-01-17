@@ -1,1 +1,8 @@
+# Env Variables
 .env
+
+# Images directory for development
+images/
+
+# Node stuff
+node_modules/

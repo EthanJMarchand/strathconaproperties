@@ -2,8 +2,10 @@ package web
 
 import (
 	"fmt"
-	"github.com/ethanjmarchand/StrathconaProperties/internal/sp"
+	"log"
 	"net/http"
+
+	"github.com/ethanjmarchand/StrathconaProperties/internal/sp"
 )
 
 // HomeHandler is the struct with the ServeHTTP method on it to pass into mux.Handle.
@@ -17,13 +19,7 @@ func (h *HomeHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	}{
 		ActiveTab: "home",
 	}
-	ns := []string{"home.gohtml", "layout.gohtml"}
-	err := h.RS.Renderer.Render(w, ns, data)
-	if err != nil {
-		_ = fmt.Errorf("error rendering home page: %s", err)
-		http.Error(w, "Something went wrong", http.StatusInternalServerError)
-		return
-	}
+	h.RS.Renderer.Render(w, r, data)
 }
 
 func NewHomeHandler(rs sp.RenderingService) HomeHandler {
@@ -54,6 +50,11 @@ func (h *ActivesHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			Beds:  4,
 			Baths: 4,
 		},
+		{
+			ID:    4,
+			Beds:  4,
+			Baths: 4,
+		},
 	}
 
 	data := struct {
@@ -63,13 +64,7 @@ func (h *ActivesHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		Actives:   actives,
 		ActiveTab: "actives",
 	}
-	ns := []string{"actives.gohtml", "layout.gohtml"}
-	err := h.RS.Renderer.Render(w, ns, data)
-	if err != nil {
-		_ = fmt.Errorf("error rendering actives page: %s", err)
-		http.Error(w, "Something went wrong", http.StatusInternalServerError)
-		return
-	}
+	h.RS.Renderer.Render(w, r, data)
 }
 
 func NewActivesHandler(rs sp.RenderingService) ActivesHandler {
@@ -89,13 +84,7 @@ func (h *ContactHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	}{
 		ActiveTab: "contact",
 	}
-	ns := []string{"contact.gohtml", "layout.gohtml"}
-	err := h.RS.Renderer.Render(w, ns, data)
-	if err != nil {
-		_ = fmt.Errorf("error rendering contact page: %s", err)
-		http.Error(w, "Something went wrong", http.StatusInternalServerError)
-		return
-	}
+	h.RS.Renderer.Render(w, r, data)
 }
 
 func NewContactHandler(rs sp.RenderingService) ContactHandler {
@@ -110,17 +99,102 @@ type SignUpHandler struct {
 }
 
 func (h *SignUpHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	ns := []string{"signup.gohtml", "layout.gohtml"}
-	err := h.RS.Renderer.Render(w, ns, nil)
-	if err != nil {
-		_ = fmt.Errorf("error rendering signup page: %s", err)
-		http.Error(w, "Something went wrong", http.StatusInternalServerError)
-		return
+	email := r.FormValue("email")
+	data := struct {
+		Email     string
+		ActiveTab string
+	}{
+		Email:     email,
+		ActiveTab: "signup",
 	}
+	h.RS.Renderer.Render(w, r, data)
 }
 
 func NewSignUpHandler(rs sp.RenderingService) SignUpHandler {
 	return SignUpHandler{
 		RS: rs,
+	}
+}
+
+type ProcessSignUpHandler struct {
+	US sp.UserService
+}
+
+func (h *ProcessSignUpHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	firstName := r.PostFormValue("first_name")
+	lastName := r.PostFormValue("last_name")
+	email := r.PostFormValue("email")
+	phone := r.PostFormValue("phone")
+	password := r.PostFormValue("password")
+	if firstName == "" || lastName == "" || email == "" || phone == "" {
+		http.Error(w, "First name and last name and phone are required", http.StatusBadRequest)
+		return
+	}
+	user, err := h.US.DB.Create(r.Context(), firstName, lastName, email, phone, password)
+	if err != nil {
+		fmt.Printf("Error creating user: %v", err)
+		http.Error(w, "Something went wrong", http.StatusInternalServerError)
+		return
+	}
+
+	fmt.Fprintf(w, "Created user: %v", user)
+
+}
+
+func NewProcessSignUpHandler(us sp.UserService) ProcessSignUpHandler {
+	return ProcessSignUpHandler{
+		US: us,
+	}
+}
+
+type SignInHandler struct {
+	RS sp.RenderingService
+}
+
+func (h *SignInHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	data := struct {
+		ActiveTab string
+		email     string
+	}{
+		ActiveTab: "signin",
+	}
+	data.email = r.FormValue("email")
+	h.RS.Renderer.Render(w, r, data)
+}
+
+func NewSignInHandler(rs sp.RenderingService) SignInHandler {
+	return SignInHandler{
+		RS: rs,
+	}
+}
+
+type ProcessSignInHandler struct {
+	US sp.UserService
+}
+
+func (h *ProcessSignInHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	email := r.PostFormValue("email")
+	password := r.PostFormValue("password")
+
+	user, err := h.US.DB.Authenticate(r.Context(), email, password)
+	if err != nil {
+		log.Printf("Error authenticating user: %v", err)
+		// TODO: return an error to the user with proper context and info.
+		http.Error(w, "failed authentication", http.StatusUnauthorized)
+		return
+	}
+	cookie := &http.Cookie{
+		Name:     "session",
+		Value:    user.Email,
+		Path:     "/",
+		HttpOnly: true,
+	}
+	http.SetCookie(w, cookie)
+	fmt.Fprintf(w, "Authenticated user: %v", user)
+}
+
+func NewProcessSignInHandler(us sp.UserService) ProcessSignInHandler {
+	return ProcessSignInHandler{
+		US: us,
 	}
 }

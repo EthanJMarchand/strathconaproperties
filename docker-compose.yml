@@ -1,0 +1,15 @@
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: littleBJudy
+      POSTGRES_DB: strathconaproperties
+    ports:
+      - "5432:5432"
+
+# to connect to db using psql run:
+# docker compose exec -it spdb psql -U admin -d strathconaproperties
+# or
+# docker exec -it strathconaproperties-spdb-1 /usr/bin/psql -U admin -d strathconaproperties

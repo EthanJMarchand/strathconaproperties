@@ -1,20 +1,25 @@
 package sp
 
 type ListingFilter struct {
-	HighPrice     string
-	LowPrice      string
-	HighBeds      string
-	lowBeds       string
-	HighBaths     string
-	LowBaths      string
-	HighYearBuilt string
-	LowYearBuilt  string
+	HighPrice     int
+	LowPrice      int
+	HighBeds      int
+	lowBeds       int
+	HighBaths     int
+	LowBaths      int
+	HighYearBuilt int
+	LowYearBuilt  int
 }
 
 type Listing struct {
-	ID    int `json:"id"`
-	Beds  int `json:"bedrooms"`
-	Baths int `json:"bathrooms"`
+	ID           int    `json:"id"`
+	Price        int    `json:"price"`
+	StreetNumber string `json:"street_number"`
+	StreetName   string `json:"street_name"`
+	Beds         int    `json:"bedrooms"`
+	Baths        int    `json:"bathrooms"`
+	YearBuilt    int    `json:"YearBuilt"`
+	CourtesyOf   string `json:"courtesyOf"`
 }
 
 type ListingService interface {

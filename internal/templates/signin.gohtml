@@ -1,0 +1,30 @@
+{{ define "content" }}
+    <div class="py-8 flex justify-center">
+        <div class="p-6 bg-white rounded shadow mx-2">
+            <h1 class="pt-2 pb-6 text-center text-3xl font-bold">Welcome Back!</h1>
+            <form method="POST" action="/signin">
+                <div class="hidden">
+                    {{ csrfField }}
+                </div>
+                <div class="py-1">
+                    <label for="email" class="font-bold text-sm">E-mail</label>
+                    <input type="text" name="email" id="email" autocomplete="email" required class="w-full border px-3 py-2"/>
+                    <div id="email-error" class="text-xs text-red-500"></div>
+                </div>
+                <div class="py-1">
+                    <label for="password" class="font-bold text-sm">Password</label>
+                    <input type="password" name="password" id="password" required class="w-full border px-3 py-2 placeholder:text-gray-400"/>
+                    <div id="password-error" class="text-xs text-red-500"></div>
+                </div>
+                <p id="reveal-btn" class="block text-gray-500 text-xs cursor-pointer underline pb-2">Show</p>
+                <div class="py-1">
+                    <button class="hover:bg-blue-400 text-white w-full bg-blue-500 py-2 rounded text-lg" type="submit">Sign in</button>
+                </div>
+                <div class="flex justify-between w-full pb-2">
+                    <p class="text-xs text-gray-500">Need an account? <a class="hover:text-blue-500 underline" href="/signup">Sign up</a></p>
+                    <p class="text-xs text-gray-500 hover"><a class="hover:text-blue-500 underline" href="/reset-pw">Forgot Password?</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+{{ end }}
